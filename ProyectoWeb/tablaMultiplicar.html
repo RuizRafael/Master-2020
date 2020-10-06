@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+    <script type="text/javascript">
+
+        function calcular() {
+            var num1 = parseInt(document.getElementById("num1").value);
+            var resultado = document.getElementById("result");
+
+            var tabla = "<table><tr><th>Operacion</th><th>Resultado</th></tr>";
+       
+
+                for (var j=1; j <= 10; j++) {
+
+                   tabla += "<tr><td>"+num1+" * "+j+" = </td><td>"+(num1*j)+"</td></tr>";
+                }
+                
+
+
+            tabla += "</table>";
+            console.log(tabla);
+            resultado.innerHTML = tabla;
+
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+
+
+    <h1>Comprobar numero mayor</h1>
+
+
+    <label>Numero 1: </label>
+    <input type="number" id="num1" value="1" /> <br />
+
+    <button type="button" onclick="calcular()"> Tabla de multiplicar! </button>
+
+
+    <h1 id="result">:)</h1>
+
+
+</body>
+</html>
