@@ -68,7 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Collatz.html" />
+    <Content Include="comprobarISBN.html" />
     <Content Include="ComprobarNumeroMayor.html" />
+    <Content Include="dniCalculator.html" />
     <Content Include="html.html" />
     <Content Include="regExp.html" />
     <Content Include="sumaNumeros.html" />

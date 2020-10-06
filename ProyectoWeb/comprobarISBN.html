@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+    <script type="text/javascript">
+
+         function suma() {
+             var  isbn = document.getElementById('isbn').value;
+             var suma = 0;
+             var posicion;
+             for (var i = 0; i < isbn.length; i++) {
+                 posicion = (parseInt(isbn.substring(i, i + 1)) * (i+1));
+                 console.log(posicion);
+                 suma += posicion;
+             }
+             var resultado = document.getElementById("result");
+
+             if (suma % 11 == 0) {
+                 resultado.innerHTML = "<p>ISBN CORRECTO</p>";
+
+             } else {
+                 resultado.innerHTML = "<p>ISBN INcorrecto</p>";
+             }
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+    <h1>Comprobar ISBN</h1>
+    <label>ISBN: </label>
+    <input type="text" id="isbn" value="8441513929" /> <br />
+    <button type="button" onclick="suma()"> Comprueba! </button>
+
+    <h1 id="result">:)</h1>
+
+
+</body>
+</html>
