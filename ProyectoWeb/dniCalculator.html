@@ -3,35 +3,45 @@
 <head>
     <meta charset="utf-8" />
     <title>Rafa Ejercicio</title>
+    <style type="text/css">
+        .red {
+            color: red;
+            border: red 1px solid;
+            font-family: Verdana;
+        }
+    </style>
     <script type="text/javascript">
 
-         function suma() {
-             let dni = document.getElementById('dni').value;
-             var arrLetras = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
+        function suma() {
+            let dni = document.getElementById('dni');
+            var arrLetras = ["T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S", "Q", "V", "H", "L", "C", "K", "E", "T"];
+            var resultado = document.getElementById("result");
 
-             if (dni.length == 0) {
-                 
-             }
-                var resultado = document.getElementById("result");
-                 var letra = arrLetras[(dni - (parseInt(dni / 23) * 23))];
-                 resultado.innerHTML = "<p>La letra del DNI es: " + letra + "</p><br />"+dni+letra+".";
+            if (dni.value.length == 0) {
+                dni.classList.add("red");
+                resultado.innerHTML = "<h2>:)</h2>";
+            } else {
+                var letra = arrLetras[(dni.value - (parseInt(dni.value / 23) * 23))];
+                resultado.innerHTML = "<p>La letra del DNI es: " + letra + "</p><br />" + dni.value + letra + ".";
+            }
 
-            
         }
 
     </script>
 
+
+
 </head>
-<body>
+        <body >
 
 
-    <h1>Comprobar dni</h1>
-    <label>dni: </label>
-    <input type="text" id="dni" value="54288834" /> <br />
-    <button type="button" onclick="suma()"> Comprueba! </button>
+        <h1 > Comprobar dni</h1 >
+        <label > dni: </label >
+        <input type="text" id="dni" value="54288834" / > <br / >
+        <button type="button" onclick="suma()" > Comprueba! </button >
 
-    <h1 id="result">:)</h1>
+        <h1 id="result" >:)</h1 >
 
 
-</body>
-</html>
+        </body >
+        </html >

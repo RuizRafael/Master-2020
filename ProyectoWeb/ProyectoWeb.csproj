@@ -71,6 +71,9 @@
     <Content Include="comprobarISBN.html" />
     <Content Include="ComprobarNumeroMayor.html" />
     <Content Include="dniCalculator.html" />
+    <Content Include="Events\CambiarImagenes.html" />
+    <Content Include="Events\eventosAsociados.html" />
+    <Content Include="Events\sumaNumerosBotones.html" />
     <Content Include="html.html" />
     <Content Include="regExp.html" />
     <Content Include="sumaNumeros.html" />

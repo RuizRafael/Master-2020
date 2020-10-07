@@ -1,0 +1,32 @@
+﻿<script type="text/javascript">
+        //window.addEventListener("load", function() {....});
+        var suma = 0;
+        window.onload = function () {
+            //CAPTURAMOS TODOS LOS OBJETOS QUE TENGAN
+            //EL MISMO NAME
+            //var botones = document.getElementsByName("boton");
+            //PODEMOS BUSCAR LOS ELEMENTOS POR SU TIPO HTML
+            var imgs = document.getElementsByTagName("img");
+            // botones[0] --> numero 8
+
+            //RECORREMOS TODOS LOS BOTONES CON REFERENCIA
+            //EN JAVASCRIPT EXISTEN DOS BUCLES POR REFERENCIA
+            //for..in   INDICES
+            for (var indice in imgs) {
+                console.log("Indice: " + indice);
+                var img = botones[indice];
+                img.addEventListener("onmouseover", change);
+            }
+
+            function change() {
+                this.src
+            }
+        }
+</script>
+</head>
+<body>
+    <h1>Sumar botones Array</h1>
+    <h2 style="color:red" id="resultado"></h2>
+
+    <img src="../img/audi.png" width="100" />
+</body>
