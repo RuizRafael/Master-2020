@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+
+    <style>
+        .rojo {
+            color: tomato;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    <h1>Buenas</h1>
+    <h2>mañanas</h2>
+
+    <h3  class="rojo">Tocame para irme</h3>
+    <h3  class="rojo">Tocame para irme</h3>
+    <h3  class="rojo">Tocame para irme</h3>
+
+    <h3  id="titulo4">Click para alert</h3>
+  
+    <script src="jquery-3.5.1.min.js"></script>
+
+
+    <script>
+
+        //Instruccion para cuando ha cargado la pagina
+        $(document).ready(function () {
+            //Esto es un codigo js y jquery 
+            //Todo funciona con selectores. Existen selectores de etiqueta y funcionan como conjunto
+            //Actuan sobre todos los objetos
+
+            $("h2").click(function(){
+                //$("h2").hide() //Ocultaria todos los elementos
+                //La palabra clave this accede al objeto que ha realizado la peticion al metodo
+                //THIS debe escribirse como jquery, sino capturamos otro objeto distinto de javascript
+                // var js = this; //Aqui no tenemos el <h2>, es JS
+                $(this).fadeOut();
+
+            })
+
+            $(".rojo").mouseover(function(){
+                $(this).fadeOut(2000);
+            })
+            $("#titulo4").click(function(){
+                alert("El click");
+            })
+
+
+            //Acceder o modificar atributos de objetos
+            //Modificar el valor de los atributos
+            var atributo =  $(SELECTOR).attr("ATRIBUTO");
+            $(SELECTOR).attr("ATRIBUTO", "NUEVO VALOR");
+
+
+            //Preguntar si un input es number
+
+            if ( $("input").attr("type") == "number" )
+            {
+                //ACCIONES
+                $("input").attr("type", "checkbox");
+            }
+
+
+            /*Estilos CSS con Jquery
+            Podemos acceder a los estilos, ya sean inline o en <style>
+            Mediante el método addClass podremos añadir estilos a cualquier 
+            Etiqueta HTML.
+            También podemos quitar estilos con removeClass.
+            Mediante css podemos incluir estilos inline en las etiquetas.*/
+
+            var color =  $(selector).css("color");
+
+            $(selector).css("color", "blue");
+
+
+        });
+
+    </script>
+
+</body>
+</html>

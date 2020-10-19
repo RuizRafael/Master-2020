@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Búsqueda jugadores con Jquery y Ajax.</h1>
+    <form>
+        <label>Seleccione un nombre: </label>
+        <select id="selectNombres">
+        </select>
+        <div style="color:aqua; font-size:1.5em;" id="resultado"></div>
+    </form>
+    <script src="../Jquery/jquery-3.5.1.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $.ajax({
+                "url": "files/jugadores.json"
+                , "method": "GET"
+                , success: function (data) {
+                    $.each(data.jugadores, function (key, value) {
+                        var option = $('<option>', {
+                            'value': key,
+                            'text': value.nombre,
+                        });
+                        $("#selectNombres").append(option);
+                    })
+                }
+                , "error": function () {
+                    $("#resultado").text("Error al leer");
+                }
+            })
+            $("#selectNombres").change(function () {
+                var id = $(this).val();
+                $.ajax({
+                    "url": "files/jugadores.json"
+                    , "method": "GET"
+                    , success: function (data) {
+                        $.each(data.jugadores, function (key, value) {
+                            if (id  == key) {
+                                var html = "";
+                       
+                                var img = "<p>Imagen:</p><img src='" + value.imagen + "' width='500' height='500' />";
+
+                                $("#resultado").html(html);
+                                $("#resultado").append(img);
+                                
+                            }
+                           
+                        })
+                    }
+                    , "error": function () {
+                        $("#resultado").text("Error al leer");
+                    }
+                })
+            })
+        })
+            
+    </script>
+</body>
+</html>

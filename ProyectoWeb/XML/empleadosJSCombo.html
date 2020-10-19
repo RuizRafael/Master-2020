@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ej</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.addEventListener("load", function () {
+                //Aqui el codigo cuando tengamos respuesta del servidor, cargamos el control <select>
+                if(this.readyState == 4 && this.status == 200){
+                    var select = document.getElementById("selectempleados");
+                    var nodosApellido = this.responseXML.getElementsByTagName("APELLIDO");
+                    for(var nodoApe of nodosApellido){
+                        var apellido = nodoApe.textContent;
+                        var option = document.createElement("option");
+                        option.innerText = apellido;
+                        option.value = apellido;
+                        select.appendChild(option);
+                    }
+                }
+            });
+            xhttp.open("GET", "datosempleados.xml");
+            xhttp.send();
+        }
+
+        function realizarPeticion () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.addEventListener("load",leerDatosEmpleado);
+            xhttp.open("GET","datosempleados.xml");
+            xhttp.send();
+        }
+        function leerDatosEmpleado() {
+            if ( this.readyState == 4 && this.status == 200){
+                var select = document.getElementById("selectempleados");
+                var posicion = -1;
+                //Necesitamos averigual el option seleccionado
+                for (let i = 0; i < select.options.length; i++) {
+                    var opt = select.options[i];
+                    if(opt.selected == true){
+                        posicion = i;
+                        break;
+                    }
+                }
+                //Nos centramos en el XML
+                var docxml = this.responseXML;
+                var nodosempleados = docxml.getElementsByTagName("EMPLEADO");
+
+                var apellido = docxml.getElementsByTagName("APELLIDO")[posicion].textContent;
+                var oficio = docxml.getElementsByTagName("OFICIO")[posicion].textContent;
+                
+
+                document.getElementById("datooficio").innerText = apellido + ", " + oficio;
+            }
+        }
+        
+    </script>
+</head>
+<body>
+    <h1>Busqueda empleados JS Select</h1>
+    <form >
+        <label>Seleccione un empleado:</label>
+        <select id="selectempleados" onchange="realizarPeticion()">
+        
+        </select>
+        <h1 style="color:aqua" id="datooficio">:)</h1>
+    </form>
+    
+
+</body>
+</html>

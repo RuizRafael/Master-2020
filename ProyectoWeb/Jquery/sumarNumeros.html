@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+
+    <style>
+        .rojo {
+            color: tomato;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <form>
+        <label>Numero 1:</label>
+        <input type="text" id="caja1" /><br />
+        <label>Numero 2:</label>
+        <input type="text" id="caja2" /><br />
+        <button type="button" id="botonsumar">Sumar numeros</button>
+    </form>
+    <h2 id="resultado">:)</h2>
+
+    <script src="jquery-3.5.1.min.js"></script>
+
+
+    <script>
+
+        //Instruccion para cuando ha cargado la pagina
+        $(document).ready(function () {
+            
+            //Capturamos el click del boton 
+            $("#botonsumar").click(function () {
+                //Capturamos valores de las cajas
+                var num1 = $("#caja1").val();
+                var num2 = $("#caja2").val();
+
+                var suma = num1 + num2;
+                $("#resultado").text(suma);
+                $("#resultado").css("color","aqua")
+            })
+
+        });
+
+    </script>
+
+</body>
+</html>

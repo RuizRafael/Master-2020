@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <script type="text/javascript">
+        function sumarNumeros() {
+
+            console.log("working");
+
+            var numero1 = parseInt(document.getElementById("caja1").value);
+            var numero2 = parseInt(document.getElementById("caja2").value);
+
+
+            var suma = numero1 + numero2;
+
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "<h3>" + suma + "</h3>";
+
+            console.log('Numero: ' + suma);
+
+        }
+
+
+        function evaluar() {
+            var cajaestacion = document.getElementById("cajaestacion");
+            var estacion = parseInt(cajaestacion.value);
+
+            var resultado = document.getElementById("resultadoEstaciones");
+
+            switch (estacion) {
+                case 1:
+                    resultado.innerText = "PRIMAVERA";
+                    break;
+                case 2:
+                    resultado.innerText = "VERANO";
+                    break;
+
+                case 3:
+                    resultado.innerText = "OTOÑO";
+                    break;
+
+                case 4:
+                    resultado.innerText = "INVIERNO";
+                    break;
+
+                default:
+                    resultado.innerText = "No hay estaciones";
+            }
+        }
+
+
+    </script>
+
+</head>
+
+<body>
+    <h1>Sumar numeros</h1>
+
+    <label>Número 1</label>
+    <input type="number" id="caja1" value="1" /> <br />
+
+    <label>Número 2</label>
+    <input type="number" id="caja2" value="1" /> <br /> <br />
+    
+    <button type="button" onclick="sumarNumeros()">
+        Suma estos numeros!
+    </button>
+
+    <h1 id="resultado">0</h1>
+
+    <img src=imgs/audi.png" id="imagen" style="width: 150px" />
+
+
+
+    <br /><br /><br /><br />
+    <input type="number" id="cajaestacion" value="0" /> <br />
+
+    <button type="button" onclick="evaluar()"> Evaluar </button>
+
+    <h1 id="resultadoEstaciones"></h1>
+
+
+
+
+</body>
+</html>
+
+
+

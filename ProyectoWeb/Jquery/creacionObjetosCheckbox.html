@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+</head>
+
+<body>
+    <h2>Generar controles dinamicamente</h2>
+    <input type="range" id="rango" list="tickmarks" min="0" max="10"><label id="valor">0</label>
+    <p id="result">0</p>
+    <div id="checks"></div>     
+
+<script src="jquery-3.5.1.min.js"></script>
+
+
+<script>
+
+           
+        $(document).ready(function () {
+               
+            $("#rango").change(function () {
+
+                var valor = $("#rango").val();
+                $("#valor").text(valor);
+
+                for(var i = 0; i < valor; i++){
+                    var aleat = parseInt(Math.random() * 25);
+
+                    var check = $("<input>", {
+                    "type": "checkbox",
+                    "name": "colores",
+                    "id": aleat
+                    })
+                    check.appendTo($("#checks"));
+                    var label = $("<label>", {
+                    "text": aleat,
+                    "for": aleat
+                    })
+                    label.appendTo($("#checks"));
+                }
+        
+
+                $("input[type=checkbox]").click(function () {
+                    var suma = parseInt($("#result").text());
+                })
+
+            })
+
+        });
+
+    </script>
+
+</body>
+</html>

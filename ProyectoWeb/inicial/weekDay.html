@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+    <script type="text/javascript">
+
+        function calcular() {
+            var dia = parseInt(document.getElementById("dia").value);
+            var mes = parseInt(document.getElementById("mes").value);
+            var anio = parseInt(document.getElementById("anio").value);
+
+            if (mes == 1) {
+                mes = 13;
+                anio--;
+            } else if(mes ==2) {
+                mes = 14;
+                anio--;
+            }
+            var op0 = Math.trunc(((mes + 1) * 3) / 5);
+            var op1 =  Math.trunc(anio / 4);
+            var op2 =  Math.trunc(anio / 100);
+            var op3 =  Math.trunc(anio / 400);
+
+            var resultadoOperaciones = Math.trunc(dia + (mes * 2) + anio + op0 + op1 - op2 + op3 + 2);
+            resultadoOperaciones = resultadoOperaciones - (Math.trunc(resultadoOperaciones / 7) * 7);
+
+
+            var resultado = document.getElementById("day");
+
+            switch (resultadoOperaciones) {
+                case 0:
+                    resultado.innerHTML =  "<h3>Sábado</h3>";
+                    break;
+                case 1:
+                    resultado.innerHTML =  "<h3>Domingo</h3>";
+                    break;
+                case 2:
+                    resultado.innerHTML =  "<h3>Lunes</h3>";
+                    break;
+                case 3:
+                    resultado.innerHTML =  "<h3>Martes</h3>";
+                    break;
+                case 4:
+                    resultado.innerHTML =  "<h3>Miércoles</h3>";
+                    break;
+                case 5:
+                    resultado.innerHTML =  "<h3>Jueves</h3>";
+                    break;
+                case 6:
+                    resultado.innerHTML =  "<h3>Viernes</h3>";
+                    break;
+
+                default:
+                   resultado.innerHTML =  "<h3>SABADO</h3>";
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+
+
+    <h1>Dia de la semana </h1>
+
+
+    <label>Día: </label>
+    <input type="number" id="dia" value="15" /> <br />
+
+    <label>Mes: </label>
+    <input type="number" id="mes" value="6" /> <br />
+
+    <label>Año: </label>
+    <input type="number" id="anio" value="1997" /> <br /> <br />
+
+    <button type="button" onclick="calcular()"> Mostrar día de la semana </button>
+
+
+    <h1 id="day">:)</h1>
+
+
+</body>
+</html>

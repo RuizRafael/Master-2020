@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Documento JSON XMLHttpRequest🐡</h1>
+    
+    <button type="button" onclick="relizarPeticion()">
+        Leer clientes JS
+    </button>
+    <div id="resultado"></div>
+    <script type="text/javascript">
+        function relizarPeticion() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                var textoPlano = this.responseText;
+                var data = JSON.parse(textoPlano);
+                leerDatosJson(data);
+            }
+            xhr.open("GET", "files/clientessimples.json", true);
+            xhr.send();
+        }
+
+        function leerDatosJson(data) {
+            for (var i = 0; i < data.clientes.length; i++) {
+                var h1 = document.createElement("h1");
+                var cliente = data.clientes[i];
+                h1.innerText = cliente.nombre;
+                document.getElementById("resultado").appendChild(h1);
+            }
+        } 🐡
+    </script>
+</body>
+</html>

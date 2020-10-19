@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa EJ</title>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <h1>Búsqueda empleados JavaScript Select</h1>
+    <form>
+        <label>Seleccione un nombre: </label>
+        <select id="selectNombres">
+        </select>
+        <h1 style="color:aqua" id="resultado"></h1>
+    </form>
+
+    <script src="../jquery-3.5.1.min.js"></script>
+    <script>
+   
+        $(document).ready(function () {
+            $.get("ClientesXML.xml", function (data) {
+                var clientes = $(data).find("CLIENTE");
+           
+
+                clientes.each(function () {
+                    var option = $('<option>', {
+                        'value': $(this).attr("IDCLIENTE"),
+                        'text': $(this).find("NOMBRE").text(),
+                    });
+                    $("#selectNombres").append(option);
+                })
+            });
+      
+
+            $("#selectNombres").change(function () {
+                var id = $(this).val();
+                $.get("ClientesXML.xml", function (data) {
+                    var filtro = "CLIENTE[IDCLIENTE=" + id + "]";
+                    var datos = $(data).find(filtro);
+
+                    
+                    if (datos.length == 0) {
+                        $("#resultado").html("Sin resultados");
+                    } else {
+                        var html = "";
+                        
+                        console.log(datos);
+                        html += "Nombre: "+datos.find("NOMBRE").text();
+                        html += "<hr/>Direccion: "+datos.find("DIRECCION").text();
+                        html += "<hr/>Email: "+datos.find("EMAIL").text();
+                        html += "<hr/>Codigo postal: "+datos.find("CODIGOPOSTAL").text();
+                        html += "<hr/>Pagina web: "+datos.find("PAGINAWEB").text();                     
+                        $("#resultado").html(html);
+                        var img = "<p>Imagen:</p><img src='" + datos.find("IMAGENCLIENTE").text() + "' width='500' height='500' />";
+
+                        $("#resultado").append(img);      
+                    }
+
+                     
+                });
+            })
+
+        })
+
+       
+    </script>
+</body>
+</html>

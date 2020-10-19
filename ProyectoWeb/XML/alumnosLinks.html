@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ej</title>
+   
+</head>
+<body>
+    <h1>Busqueda empleados JS Select</h1>
+    <div id="alumnos"></div>
+    <h1 style="color:aqua" id="info">:)</h1>
+
+    <script src = "../Jquery/jquery-3.5.1.min.js" ></script>
+
+    <script>
+        window.onload = function () {
+            var xhttp = new XMLHttpRequest();
+            xhttp.addEventListener("load", function () {
+                //Aqui el codigo cuando tengamos respuesta del servidor, cargamos el control <select>
+                if (this.readyState == 4 && this.status == 200) {
+                    var div = document.getElementById("alumnos");
+                    var alumnos = this.responseXML.getElementsByTagName("alumno");
+                    for (var alumno of alumnos) {
+                        var a = $("<a>", {
+                            "text": alumno.getElementsByTagName("nombre")[0].textContent,
+                            "href": "#",
+                            "data-id": alumno.getElementsByTagName("idalumno")[0].textContent,
+                            "data-nota": alumno.getElementsByTagName("nota")[0].textContent,
+                            "data-apellidos": alumno.getElementsByTagName("apellidos")[0].textContent,
+                            "data-nombre": alumno.getElementsByTagName("nombre")[0].textContent
+                        })
+
+                        $("#alumnos").append(a);
+                        $(document).on("click", "a", function () {
+                            var nota = $(this).data("nota")
+                            var nombre = $(this).data("nombre")
+                            var apellidos = $(this).data("apellidos")
+                            var respuesta = nombre + " " + apellidos + " --> " + nota + " (" + (parseInt(nota) >= 5 ? "Aprobado" : "Suspenso") + ")"
+                            $("#info").text(respuesta)
+                        })
+                        var br = document.createElement("br");
+                        $("#alumnos").append(br);
+                    }
+                }
+            });
+            xhttp.open("GET", "alumnos.xml");
+            xhttp.send();
+        }
+
+        function realizarPeticion() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.addEventListener("load", leerDatosEmpleado);
+            xhttp.open("GET", "alumnos.xml");
+            xhttp.send();
+        }
+        function leerDatosEmpleado() {
+            if (this.readyState == 4 && this.status == 200) {
+                var select = document.getElementById("selectempleados");
+                var posicion = -1;
+                //Necesitamos averigual el option seleccionado
+                for (let i = 0; i < select.options.length; i++) {
+                    var opt = select.options[i];
+                    if (opt.selected == true) {
+                        posicion = i;
+                        break;
+                    }
+                }
+                //Nos centramos en el XML
+                var docxml = this.responseXML;
+                var nodosempleados = docxml.getElementsByTagName("EMPLEADO");
+
+                var apellido = docxml.getElementsByTagName("APELLIDO")[0].textContent;
+                var oficio = docxml.getElementsByTagName("OFICIO")[0].textContent;
+
+
+                document.getElementById("datooficio").innerText = apellido + ", " + oficio;
+            }
+        }
+
+    </script>
+
+</body>
+</html>

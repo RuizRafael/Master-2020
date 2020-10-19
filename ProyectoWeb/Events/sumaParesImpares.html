@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+        var elements;
+        window.onload = function () {
+             elements = Array.from(document.getElementsByTagName('input')).filter(x => x.type === "number")
+
+            for(var i=0; i< elements.length; i++) {
+                elements[i].value = Math.floor(Math.random()*10+1);
+            }
+        }
+            function calcularNumeros() {
+                var suma = 0;
+                var opcion = document.formulario.suma;
+                var resultado = document.getElementById("resultado");
+                    if (opcion[0].checked == true) {
+                       suma += parseInt(elements[0].value) + parseInt(elements[2].value);
+                       resultado.innerText = suma;
+
+                    }else {
+                        suma += parseInt(elements[1].value) + parseInt(elements[3].value);
+                        resultado.innerText = suma;
+                    }
+            
+                for(var i=0; i< elements.length; i++) {
+                    if(i%2 == 0){
+                        elements[i].className = "blue";
+                    } else {
+                        elements[i].className = "red";
+                    }
+                }                
+            }
+        
+
+        
+    </script>
+
+
+    <style type="text/css">
+        .red { 
+            background-color: tomato;
+        }
+        .blue {
+            background-color: turquoise;
+        }
+        
+    </style>
+</head>
+<body>
+
+<form name="formulario">
+    <input type="radio" name="suma" id="impar" checked="checked"/>Impar <br />
+    <input type="radio" name="suma" id="par"/>Par <br />
+
+
+    <input type="number" id="number1" /> <br />
+    <input type="number" id="number2" /> <br />
+    <input type="number" id="number3" /> <br />
+    <input type="number" id="number4" /> <br />
+
+    <button type="button" onclick="calcularNumeros()">
+        Suma!
+    </button>
+</form>
+    <h1 id="resultado">:)</h1>
+
+</body>
+</html>

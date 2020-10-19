@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+
+    
+</head>
+<body>
+    <h1>Cambiar imagenes al pasar el ratón</h1>
+    <h2 style="color:red" id="resultado"></h2>
+
+    <img src="../img/audi.png" width="100" />
+    <img src="../img/audi.png" width="100" />
+    <img src="../img/audi.png" width="100" />
+    <img src="../img/audi.png" width="100" />
+    <img src="../img/audi.png" width="100" />
+    <img src="../img/audi.png" width="100" />
+
+
+    <script src="jquery-3.5.1.min.js"></script>
+
+
+    <script>
+
+        //Instruccion para cuando ha cargado la pagina
+        $(document).ready(function () {
+            $("img").mouseover(function(){
+                $(this).attr("src") = "../img/xbox.png";
+            });
+        });
+    
+    </script>
+</body>

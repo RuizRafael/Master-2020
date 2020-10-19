@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>Leer contenido con JSON y con AJAX</h1>
+    <button type="button" id="botonGet">Leer con JSON</button> 
+    <button type="button" id="botonAjax">Leer con AJAX</button> 
+    <div id="contenido"></div>
+    <script src="../Jquery/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#botonGet").click(function () {
+                $.getJSON("files/tareas.json", function (data) {
+                    //vamos a recoger un objeto simple
+                    $.each(data, function (key, value) {
+                        //Key --> Clave        value --> es el valor
+                        var h1 = $("<h1>", {
+                            "text": "Clave: " + key + ", Valor: " + value
+                        })
+                        h1.appendTo($("#contenido"));
+                    })
+                })
+            })
+
+            $("#botonAjax").click(function () {
+                $.ajax({
+                    "url": "files/tareas.json"
+                    , "method": "GET"
+                    , success: function (data) {
+                        $.each(data, function (key, value) {
+                            var h1 = $("<h1>", {
+                                "text": "Clave: " + key + ", Valor: " + value
+                            })
+                            h1.css("color:", "aqua");
+                            $("#contenido").append(h1);
+                        })
+                    }
+                    , "error": function () {
+                        $("#contenido").text("Error al leer");
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

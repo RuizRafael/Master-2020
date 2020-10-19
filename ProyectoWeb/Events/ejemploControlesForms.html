@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+
+    <script type="text/javascript">
+        //window.addEventListener("load", function() {....});
+
+          
+            //PODEMOS BUSCAR LOS ELEMENTOS POR SU TIPO HTML
+
+            function mostrarDeportes() {
+                var select = document.getElementById("deportes");
+
+                for (var opcion in select.options) {
+                    console.log(opcion.selected);
+                    if(opcion.selected == true){
+                        var resultado = documente.getElementById("resultado");
+                        resultado.innerText = "Deportes: ";
+                    }
+                }           
+            }
+            
+            function colorSeleccionado(){
+                  //CUANDO PONEMOS EL MISMO NAME A CONTROLES
+                //FORM, SE GENERA UN ARRAY EN EL DOM DINAMICO
+                //CON EL NAME
+                //var colores = document.getElementsByName("colores");
+                //var colores = document.forms[0].colores;
+                var colores = document.formulario.colores;
+                var html = "";
+                //RECORREMOS EL ARRAY DE INPUT CHECKBOX
+                for (var chk of colores) {
+                    //UN INPUT CHECKBOX/RADIO UTILIZA checked
+                    //PARA SU SELECCION
+                    if (chk.checked == true) {
+                        html += chk.value + ", ";
+                    }
+                }
+                var resultado = document.getElementById("resultado");
+                resultado.innerText = html;
+                console.log(colores.length);
+
+            }
+
+            
+        
+</script>
+</head>
+<body>
+    <form name="formulario">
+
+<label>Mis deportes favs</label>
+
+
+<select id="deportes">
+    <option value="beisbol">Beisbol</option>
+    <option value="hockey">Hockey</option>
+    <option value="batminton">Batminton</option>
+    <option value="balonmano">Balonmano</option>
+</select><br />
+
+
+
+<button type="button" onclick="mostrarDeportes()">
+    Mostrar los deportes marcados
+</button><br />
+    <input type="checkbox" value="azul" name="colores"/>Azul<br />
+    <input type="checkbox" value="rojo" name="colores"/>Rojo<br />
+    <input type="checkbox" value="verde" name="colores"/>Verde<br />
+    <input type="checkbox" value="naranja" name="colores"/>naranja<br />
+    <button type="button" onclick="colorSeleccionado()">
+        Mostrar los colores marcados
+    </button>
+</form>   
+    <h1 id="resultado">:)</h1>
+
+    
+</body>

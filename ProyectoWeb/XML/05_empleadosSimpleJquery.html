@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa ej</title>
+</head>
+<body>
+    <h1>Documento XML simple JQuery</h1>
+    <button type="button" id="botonLeer">
+        Cargar empleados
+    </button>
+    <div id="resultado"></div>
+    <script src="../Jquery/jquery-3.5.1.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            <a href="files/empleados.xml"></a>
+            $("#botonLeer").click(function () {
+                //En el data viene el objeto response
+                $.get("empleados.xml", function (data) {
+                    console.log("Reading...");
+                });
+            });
+        })
+    </script>
+</body>
+</html>

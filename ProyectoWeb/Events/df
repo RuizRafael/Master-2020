@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script>
+
+        function calcularNumeros() {
+            var elements = Array.from(document.getElementsByTagName('input')).filter(x => x.type === "number")
+            var suma = 0
+            var par = Array.from(document.getElementsByTagName('input')).filter(x => x.type === "radio" && x.checked === true).map(x => x.id) == "par" ? true : false
+            elements.forEach(x => {
+                valor = Math.floor(Math.random()*1000)
+                x.value = valor
+
+                x.className = valor % 2 === 0 ? "blue" : "red"
+
+
+                    var esPar = valor % 2 === 0
+                    suma = suma + (par === true ? (esPar ? valor : 0) : (esPar ? 0 : valor))
+                
+            })
+            document.getElementById('resultado').innerText = "Resultado: " + suma
+
+        }
+
+
+
+    </script>
+
+
+    <style type="text/css">
+        .red { 
+            background-color: tomato;
+        }
+        .blue {
+            background-color: turquoise;
+        }
+        
+    </style>
+</head>
+<body>
+    <form>
+
+
+        <input type="radio" name="suma" id="par" />Par <br />
+        <input type="radio" name="suma" id="impar" />Impar <br />
+
+        <input type="number" class="blue" id="number1" /> <br />
+        <input type="number" id="number2" /> <br />
+        <input type="number" id="number3" /> <br />
+        <input type="number" id="number4" /> <br />
+
+        <button type="button" onclick="calcularNumeros()">
+            Suma!
+        </button>
+
+        <h1 id="resultado"></h1>
+
+    </form>
+</body>
+</html>

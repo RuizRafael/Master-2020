@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+    <script type="text/javascript">
+
+         function validame() {
+             let email = document.getElementById('correo').value;
+             let valido = /^([a-zA-Z.]+)([@]{1})([a-zA-Z]+)([.]{1})([a-zA-Z]{2,4})$/.test(email);
+             var resultado = document.getElementById("result");
+             resultado.innerHTML = "<p>" + (valido ? "Correo valido" : "Correo invalido") + "</p>";
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+    <h1>Comprobar correo</h1>
+    <label>Correo: </label>
+    <input type="text" id="correo" value="rafa@rafa.rafa" /> <br />
+
+    <button type="button" onclick="validame()"> Comprueba! </button>
+
+
+    <h1 id="result">:)</h1>
+
+
+</body>
+</html>

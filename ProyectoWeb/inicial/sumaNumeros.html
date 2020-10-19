@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Rafa Ejercicio</title>
+    <script type="text/javascript">
+
+         function suma() {
+             let number = document.getElementById('number').value;
+             var suma = 0;
+             for (var i = 0; i < number.length; i++) {
+                 suma += parseInt(number.substring(i, i + 1));
+             }
+             var resultado = document.getElementById("result");
+             resultado.innerHTML = "<p>La suma de todos los número es: "+suma+"</p>";
+        }
+
+    </script>
+
+</head>
+<body>
+
+
+    <h1>Comprobar correo</h1>
+    <label>Suma de numeros: </label>
+    <input type="text" id="number" value="123456789" /> <br />
+    <button type="button" onclick="suma()"> Comprueba! </button>
+
+    <h1 id="result">:)</h1>
+
+
+</body>
+</html>
